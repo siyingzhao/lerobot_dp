@@ -392,10 +392,10 @@ class DiffusionModel(nn.Module):
                 target_norm = torch.linalg.norm(target_disp, dim=-1)
                 ratio = pred_norm / (target_norm + eps)
                 output_dict = {
-                    "aux_displacement_loss": aux_loss.detach(),
-                    "aux_displacement_ratio": ratio.mean(),
-                    "aux_displacement_pred_norm": pred_norm.mean(),
-                    "aux_displacement_target_norm": target_norm.mean(),
+                    "aux_displacement_loss": aux_loss.detach().item(),
+                    "aux_displacement_ratio": ratio.mean().item(),
+                    "aux_displacement_pred_norm": pred_norm.mean().item(),
+                    "aux_displacement_target_norm": target_norm.mean().item(),
                 }
 
         return loss, output_dict
